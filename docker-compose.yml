@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  feedback.webapi:
+    image: ${DOCKER_REGISTRY-}feedbackwebapi
+    build:
+        context: .
+        dockerfile: Feedback.WebApi/Dockerfile
+    environment:        
+        DB_SERVER: ms-sql-server
+        DB_PORT: 1433        
+        DB_NAME: FeedbackDb
+        DB_USER: "SA"       
+        DB_PASSWORD: "yourStrong(!)Password"
+        TRUSTED_CONNECTION: False
+        TRUST_SERVER_CERTIFICATE: True
+  ms-sql-server:    
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:         
+        ACCEPT_EULA: "Y"
+        SA_PASSWORD: "yourStrong(!)Password"        
+        MSSQL_PID: Express
+    ports:        
+        - "1433:1433"
