@@ -12,6 +12,6 @@ public class FeedbackConfiguration : IEntityTypeConfiguration<FeedbackItem>
         builder.Property("Score").IsRequired();
         builder.Property("Author").IsRequired();
         builder.Property("Subject").IsRequired();
-        builder.Property("Publish Date").IsRequired();
+        builder.Property("PublishDate").IsRequired();
     }
 }
